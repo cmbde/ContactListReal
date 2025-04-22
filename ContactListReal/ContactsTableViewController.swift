@@ -20,11 +20,14 @@ class ContactsTableViewController: UITableViewController {
             }
         }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDatabase()
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataFromDatabase()
-
+    
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
