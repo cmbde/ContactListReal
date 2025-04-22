@@ -7,7 +7,18 @@
 
 import UIKit
 
-class ContactsTableViewController: UIViewController {
+class ContactsTableViewController: UITableViewController {
+    let contacts = ["Jim", "John", "Dana", "Rosie", "Justin", "Jeremy", "Sarah", "Matt", "Joe", "Donald", "Jeff"]
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsCell", for: indexPath)
+        cell.textLabel?.text = contacts[indexPath.row]
+        return cell
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
