@@ -73,7 +73,6 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             let context = appDelegate.persistentContainer.viewContext
             currentContact = Contact(context: context)
         }
-        currentContact
         currentContact?.contactName    = txtContactName.text
         currentContact?.streetAddress = txtAddress.text
         currentContact?.city          = txtCity.text
