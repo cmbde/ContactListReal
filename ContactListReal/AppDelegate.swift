@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let settings = UserDefaults.standard
 
-        if settings.string(forKey: Constants.sortFieldKey) == nil {
-            settings.set("City", forKey: Constants.sortFieldKey)
+        if settings.string(forKey: Constants.kSortField) == nil {
+            settings.set("city", forKey: Constants.kSortField)
             }
 
         if settings.object(forKey: Constants.sortDirectionKey) == nil {

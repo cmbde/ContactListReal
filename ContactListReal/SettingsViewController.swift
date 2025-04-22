@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     
     
-    let sortOrderItems: Array<String> = ["ContactName", "City", "Birthday"]
+    let sortOrderItems: Array<String> = ["contactName", "city", "birthday"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

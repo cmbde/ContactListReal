@@ -45,8 +45,8 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             }
         }
 
+   
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,6 +63,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             formatter.dateStyle = .short
             if currentContact!.birthday != nil {
                 lblBirthdate.text = formatter.string(from:currentContact!.birthday as! Date)
+                self.navigationItem.leftBarButtonItem = self.editButtonItem
             }
         }
         
