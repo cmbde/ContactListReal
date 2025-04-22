@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants{
-    static let sortFieldKey = "sortField"
-    static let sortDirectionKey = "sortDirectionAscending"
+struct Constants {
+    static let kSortField = "sortField"
+    static let kSortDirectionAscending = "sortDirectionAscending"
 }
