@@ -20,11 +20,14 @@ CENvbnRhY3RzA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O0g-9j-Fu2">
-                                <rect key="frame" x="131" y="103" width="131" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="View"/>
+                                    <segment title="Edit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="AxP-sh-Cnx"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-ha-5Xx">
                                 <rect key="frame" x="0.0" y="149" width="393" height="620"/>
@@ -191,6 +194,20 @@ CENvbnRhY3RzA
                     <navigationItem key="navigationItem" id="ZDv-T9-AVj">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnChangeDate" destination="INf-AK-U0G" id="qgi-o9-XNB"/>
+                        <outlet property="lblBirthdate" destination="I5L-E4-8hc" id="H0y-hs-3hy"/>
+                        <outlet property="scrollView" destination="VGA-ha-5Xx" id="XpW-e8-CaS"/>
+                        <outlet property="sgmtEditMode" destination="O0g-9j-Fu2" id="mx8-4F-26h"/>
+                        <outlet property="txtAddress" destination="d0V-Zb-tcT" id="uMp-Ad-27F"/>
+                        <outlet property="txtCellPhone" destination="Mja-Ri-fed" id="V0V-4T-Cgm"/>
+                        <outlet property="txtCity" destination="RxT-3G-Sa8" id="18t-jY-I2e"/>
+                        <outlet property="txtContactName" destination="kse-Ch-EvL" id="BhI-Z4-0lK"/>
+                        <outlet property="txtEmail" destination="fhG-Bj-lAL" id="UZg-HK-1xh"/>
+                        <outlet property="txtHomePhone" destination="Qrf-i5-1jW" id="Sgo-mO-yao"/>
+                        <outlet property="txtState" destination="iHm-Ca-lFn" id="LHl-Qc-Iiq"/>
+                        <outlet property="txtZip" destination="ZQc-EO-ElV" id="gxI-QQ-PY2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

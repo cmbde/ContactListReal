@@ -11,7 +11,6 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
 
     var currentContact: Contact? = nil
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    weak var lblTestLabel: UILabel!
     @IBOutlet weak var btnChangeDate: UIButton!
     @IBOutlet weak var lblBirthdate: UILabel!
     @IBOutlet weak var txtHomePhone: UITextField!
