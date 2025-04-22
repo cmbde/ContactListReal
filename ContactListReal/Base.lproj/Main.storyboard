@@ -20,7 +20,7 @@ CENvbnRhY3RzA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O0g-9j-Fu2">
-                                <rect key="frame" x="147" y="59" width="99" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -30,7 +30,7 @@ CENvbnRhY3RzA
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-ha-5Xx">
-                                <rect key="frame" x="0.0" y="105" width="393" height="713"/>
+                                <rect key="frame" x="0.0" y="149" width="393" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="iYU-A9-liK">
                                         <rect key="frame" x="15" y="0.0" width="368" height="253.66666666666666"/>
@@ -52,7 +52,7 @@ CENvbnRhY3RzA
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jLh-TE-8Sr">
-                                                <rect key="frame" x="0.0" y="37.999999999999986" width="368" height="34"/>
+                                                <rect key="frame" x="0.0" y="38" width="368" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtO-OI-obY">
                                                         <rect key="frame" x="0.0" y="0.0" width="67.333333333333329" height="34"/>
@@ -68,7 +68,7 @@ CENvbnRhY3RzA
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PMs-63-0td">
-                                                <rect key="frame" x="0.0" y="75.999999999999986" width="368" height="34"/>
+                                                <rect key="frame" x="0.0" y="76" width="368" height="34"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="6" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RxT-3G-Sa8">
                                                         <rect key="frame" x="0.0" y="0.0" width="199" height="34"/>
@@ -128,7 +128,7 @@ CENvbnRhY3RzA
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rxs-Iv-8bL">
-                                                <rect key="frame" x="0.0" y="181.33333333333331" width="368" height="34"/>
+                                                <rect key="frame" x="0.0" y="181.33333333333334" width="368" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pij-LP-04V">
                                                         <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="34"/>
@@ -144,7 +144,7 @@ CENvbnRhY3RzA
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="iLO-Zs-iVV">
-                                                <rect key="frame" x="0.0" y="219.33333333333331" width="368" height="34.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="219.33333333333334" width="368" height="34.333333333333343"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pt9-Zr-qvp">
                                                         <rect key="frame" x="0.0" y="0.0" width="85.666666666666671" height="34.333333333333336"/>
@@ -221,7 +221,7 @@ CENvbnRhY3RzA
             <objects>
                 <viewController id="fJj-hR-lmn" customClass="BirthdayViewController" customModule="ContactListReal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LtM-5T-9by">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIV-04-ndU">
@@ -396,6 +396,9 @@ U29ydCBPcmRlcjoIA
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="133"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="EditContact" trigger="accessoryAction" id="0Hz-Os-rCT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -403,13 +406,28 @@ U29ydCBPcmRlcjoIA
                             <outlet property="delegate" destination="Uz7-jW-VSL" id="LKG-nh-SBG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5KE-om-IH0"/>
+                    <navigationItem key="navigationItem" id="5KE-om-IH0">
+                        <centerItemGroups>
+                            <barButtonItemGroup customizationDisposition="fixed" id="ea4-bq-5fA">
+                                <barButtonItems>
+                                    <barButtonItem systemItem="add" id="rfo-5S-npX">
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="AddContact" id="xn5-5q-ege"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </barButtonItems>
+                            </barButtonItemGroup>
+                        </centerItemGroups>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7d-F1-cUJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-324.4274809160305" y="725.35211267605632"/>
+            <point key="canvasLocation" x="-390" y="733"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Hz-Os-rCT"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="map" catalog="system" width="128" height="112"/>
