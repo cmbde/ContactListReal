@@ -9,14 +9,27 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class MapViewController: UIViewController, CLLocationManagerDelegate{
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     var locationManager = CLLocationManager()
     
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        var span = MKCoordinateSpan()
+        span.latitudeDelta = 0.2
+        span.longitudeDelta = 0.2
+        let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+        mapView.setRegion(viewRegion, animated: true)
+    }
+    
+    @IBAction func findUser(_ sender: Any) {
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true)
+    }
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        mapView.delegate = self
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

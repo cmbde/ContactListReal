@@ -267,19 +267,28 @@ CENvbnRhY3RzA
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Kb-Jb-IEU">
+                                <rect key="frame" x="20" y="79" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Find Me!"/>
+                                <connections>
+                                    <action selector="findUser:" destination="aGB-a7-17R" eventType="touchUpInside" id="oLh-uq-jvB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iQk-rh-fyz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Gbi-Yc-bPr" firstAttribute="top" secondItem="iQk-rh-fyz" secondAttribute="top" id="8id-Mu-mvh"/>
+                            <constraint firstItem="8Kb-Jb-IEU" firstAttribute="leading" secondItem="iQk-rh-fyz" secondAttribute="leading" constant="20" id="eOv-Ro-oPW"/>
                             <constraint firstItem="Gbi-Yc-bPr" firstAttribute="trailing" secondItem="iQk-rh-fyz" secondAttribute="trailing" id="gvP-G5-AiC"/>
                             <constraint firstItem="Gbi-Yc-bPr" firstAttribute="bottom" secondItem="iQk-rh-fyz" secondAttribute="bottom" id="kGk-57-Urw"/>
                             <constraint firstItem="Gbi-Yc-bPr" firstAttribute="leading" secondItem="iQk-rh-fyz" secondAttribute="leading" id="vgE-dg-rd3"/>
+                            <constraint firstItem="8Kb-Jb-IEU" firstAttribute="top" secondItem="iQk-rh-fyz" secondAttribute="top" constant="20" id="yHq-Bw-9GS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="hN8-mT-hc4"/>
                     <connections>
-                        <outlet property="MKMapView" destination="Gbi-Yc-bPr" id="7GM-6K-vPR"/>
                         <outlet property="mapView" destination="Gbi-Yc-bPr" id="3jv-uD-FVz"/>
                     </connections>
                 </viewController>
