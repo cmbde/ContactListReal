@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SZH-Df-CBq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TNQ-hb-HRe">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
@@ -424,10 +424,10 @@ U29ydCBPcmRlcjoIA
             </objects>
             <point key="canvasLocation" x="-390" y="733"/>
         </scene>
-        <!--View Controller-->
+        <!--Location Demo View Controller-->
         <scene sceneID="top-Ld-jrA">
             <objects>
-                <viewController id="TNQ-hb-HRe" sceneMemberID="viewController">
+                <viewController id="TNQ-hb-HRe" customClass="LocationDemoViewController" customModule="ContactListReal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mur-5B-GUY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,11 +466,17 @@ U29ydCBPcmRlcjoIA
                                                 <rect key="frame" x="23.666666666666671" y="132" width="202.66666666666663" height="34.333333333333343"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Address to Coordinates"/>
+                                                <connections>
+                                                    <action selector="addressToCoordinates:" destination="TNQ-hb-HRe" eventType="touchUpInside" id="DFM-N9-kh7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICD-6X-8I0">
                                                 <rect key="frame" x="38.666666666666671" y="176.33333333333334" width="172.66666666666663" height="34.333333333333343"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Device Coordinates"/>
+                                                <connections>
+                                                    <action selector="deviceCoordinates:" destination="TNQ-hb-HRe" eventType="touchUpInside" id="Vpe-nU-EYs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -638,6 +644,19 @@ U29ydCBPcmRlcjoIA
                             <constraint firstItem="of9-fV-gbK" firstAttribute="top" secondItem="voR-Gt-xXL" secondAttribute="top" id="D6c-So-Lqt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="HeadingAccuracy" destination="ndM-aP-wGF" id="SsU-2a-NCk"/>
+                        <outlet property="lblAltitude" destination="wn8-zK-WL4" id="hMp-Ai-gtq"/>
+                        <outlet property="lblAltitudeAccuracy" destination="teo-Ou-uGl" id="ZCT-jw-Hzm"/>
+                        <outlet property="lblHeading" destination="ndM-aP-wGF" id="zSw-kZ-SfC"/>
+                        <outlet property="lblHeadingAccuracy" destination="TYU-R8-49b" id="qsY-cG-bSa"/>
+                        <outlet property="lblLatitude" destination="gaS-1T-qQt" id="ZUj-op-6LK"/>
+                        <outlet property="lblLocationAccuracy" destination="bCl-6K-vAw" id="ls1-4N-gfo"/>
+                        <outlet property="lblLongitude" destination="n8n-4c-pB2" id="7Gd-Uh-VtV"/>
+                        <outlet property="txtCity" destination="jhf-YX-R4Q" id="bBu-DT-vtw"/>
+                        <outlet property="txtState" destination="9oX-Ez-jYl" id="5Mf-7x-SkX"/>
+                        <outlet property="txtStreet" destination="b5i-t1-dgS" id="rf6-WR-iBz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUW-7Z-aol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
