@@ -276,11 +276,12 @@ CENvbnRhY3RzA
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vza-OL-Qsx">
-                                <rect key="frame" x="122" y="738" width="131" height="31"/>
+                                <rect key="frame" x="122" y="738" width="131" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satelite"/>
                                 </segments>
                                 <connections>
                                     <action selector="ChangeMapType:" destination="aGB-a7-17R" eventType="valueChanged" id="HIl-eg-V4N"/>
