@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class LocationDemoViewController: UIViewController {
+class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var txtStreet: UITextField!
     @IBOutlet weak var txtCity: UITextField!
@@ -21,15 +21,37 @@ class LocationDemoViewController: UIViewController {
     @IBOutlet weak var lblLongitude: UILabel!
     @IBOutlet weak var lblLocationAccuracy: UILabel!
     lazy var geoCoder = CLGeocoder()
+    var locationManager: CLLocationManager!
 
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
+    }
     
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let location = locations.last {
+            let eventDate = location.timestamp
+            let howRecent = eventDate.timeIntervalSinceNow
+            if Double(howRecent) < 15.0 {
+                let coordinate = location.coordinate
+                lblLatitude.text = String(format: "%g\u{00B0}", coordinate.latitude)
+                lblLongitude.text = String(format: "%g\u{00B0}", coordinate.longitude)
+                lblLocationAccuracy.text = String(format: "%g\u{00B0}", location.horizontalAccuracy)
+                lblAltitude.text = String(format: "%g\u{00B0}", location.altitude)
+                lblAltitudeAccuracy.text = String(format: "%g\u{00B0}", location.verticalAccuracy)
+            }
+        }
+    }
     
     
     @IBAction func deviceCoordinates(_ sender: Any) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.distanceFilter = 100
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
     
     }
     @IBAction func addressToCoordinates(_ sender: Any) {
@@ -59,8 +81,20 @@ class LocationDemoViewController: UIViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
 
         // Do any additional setup after loading the view.
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        if status == .authorizedWhenInUse{
+            print("Permission granted")
+        }
+        else {
+            print("Permission NOT granted")
+        }
     }
     
 
