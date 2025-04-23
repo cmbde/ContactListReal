@@ -32,6 +32,19 @@ class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
         view.endEditing(true)
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let errorType = error._code == CLError.denied.rawValue ? "Location Permission Denied" : "Unknown Error"
+        let alertController = UIAlertController(title: "Error getting location: \(errorType)",
+                                                message: "Error Message: \(error.localizedDescription)",
+                                                preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK",
+                                     style: .default,
+                                     handler: nil)
+        alertController.addAction(actionOK)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         if newHeading.headingAccuracy > 0 {
             let theHeading = newHeading.trueHeading
