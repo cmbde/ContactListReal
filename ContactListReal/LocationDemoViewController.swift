@@ -13,7 +13,6 @@ class LocationDemoViewController: UIViewController {
     @IBOutlet weak var txtStreet: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtState: UITextField!
-
     @IBOutlet weak var lblAltitudeAccuracy: UILabel!
     @IBOutlet weak var lblAltitude: UILabel!
     @IBOutlet weak var lblHeading: UILabel!
@@ -22,6 +21,7 @@ class LocationDemoViewController: UIViewController {
     @IBOutlet weak var lblLongitude: UILabel!
     @IBOutlet weak var lblLocationAccuracy: UILabel!
     lazy var geoCoder = CLGeocoder()
+
     
     
     @objc func dismissKeyboard(){
@@ -33,8 +33,28 @@ class LocationDemoViewController: UIViewController {
     
     }
     @IBAction func addressToCoordinates(_ sender: Any) {
-    }
+        let address = "\(txtStreet.text!), \(txtCity.text!), \(txtState.text!)"
+        geoCoder.geocodeAddressString(address) {
+            (placemarks, error) in
+            self.processAddressResponse(withPlacemarks: placemarks, error: error)
+        }    }
     
+    private func processAddressResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        if let error = error {
+            print("Geocode error: \(error)")
+        } else {
+            var bestMatch: CLLocation?
+            if let placemarks = placemarks, placemarks.count > 0 {
+                bestMatch = placemarks.first?.location
+            }
+            if let coordinate = bestMatch?.coordinate {
+                lblLatitude.text = String(format: "%g", coordinate.latitude)
+                lblLongitude.text = String(format: "%g", coordinate.longitude)
+            } else {
+                print("Didn't find any matching locations")
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))

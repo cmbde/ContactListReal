@@ -645,7 +645,6 @@ U29ydCBPcmRlcjoIA
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="HeadingAccuracy" destination="ndM-aP-wGF" id="SsU-2a-NCk"/>
                         <outlet property="lblAltitude" destination="wn8-zK-WL4" id="hMp-Ai-gtq"/>
                         <outlet property="lblAltitudeAccuracy" destination="teo-Ou-uGl" id="ZCT-jw-Hzm"/>
                         <outlet property="lblHeading" destination="ndM-aP-wGF" id="zSw-kZ-SfC"/>
