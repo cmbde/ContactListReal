@@ -31,6 +31,27 @@ class LocationDemoViewController: UIViewController, CLLocationManagerDelegate {
     @objc func dismissKeyboard(){
         view.endEditing(true)
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        if newHeading.headingAccuracy > 0 {
+            let theHeading = newHeading.trueHeading
+            var direction: String
+            switch theHeading {
+            case 225..<315:
+                direction = "W"
+            case 135..<225:
+                direction = "S"
+            case 45..<135:
+                direction = "E"
+            default:
+                direction = "N"
+            }
+            lblHeading.text = String(format: "%g° (%@)", theHeading, direction)
+            lblHeadingAccuracy.text = String(format: "%g°", newHeading.headingAccuracy)
+        }
+    }
+
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         if let location = locations.last {
             let eventDate = location.timestamp
