@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class MapViewController: UIViewController {
-
+class MapViewController: UIViewController, CLLocationManagerDelegate{
+    var locationManager = CLLocationManager()
+    
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
