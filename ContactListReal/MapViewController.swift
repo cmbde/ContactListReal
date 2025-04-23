@@ -10,8 +10,21 @@ import CoreLocation
 import MapKit
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
+    @IBOutlet weak var sgmtMapType: UISegmentedControl!
     var locationManager = CLLocationManager()
     var contacts: [Contact] = []
+    @IBAction func ChangeMapType(_ sender: Any) {
+        switch sgmtMapType.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .satellite
+        case 2:
+            mapView.mapType = .hybrid
+        default:
+            break
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -37,30 +50,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    private func processAddressResponse (_ contact: Contact, withPlacemarks placemarks: [CLPlacemark]?,
-                                         error: Error?){
-        if let error = error{
+    private func processAddressResponse(_ contact: Contact, withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        if let error = error {
             print("Geocoder error: \(error)")
-        }
-        else{
+        } else {
             var bestMatch: CLLocation?
             if let placemarks = placemarks, placemarks.count > 0 {
                 bestMatch = placemarks.first?.location
             }
-            if let coordsinate = bestMatch?.coordinate{
+            if let coordinate = bestMatch?.coordinate {
                 let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
                 mp.title = contact.contactName
                 mp.subtitle = contact.streetAddress
                 mapView.addAnnotation(mp)
-            }
-            else{
-                print("didnt find any matching locations")
+            } else {
+                print("didn't find any matching locations")
             }
         }
     }
 
+
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        mapView.removeAnnotations(mapView.annotations)
         var span = MKCoordinateSpan()
         span.latitudeDelta = 0.2
         span.longitudeDelta = 0.2
