@@ -17,9 +17,9 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewWillAppear(animated)
 
         let settings = UserDefaults.standard
-        swAscending.setOn(settings.bool(forKey: Constants.sortDirectionKey), animated: true)
+        swAscending.setOn(settings.bool(forKey: Constants.kSortDirectionAscending), animated: true)
         
-        if let sortField = settings.string(forKey: Constants.sortFieldKey) {
+        if let sortField = settings.string(forKey: Constants.kSortField) {
             var i = 0
             for field in sortOrderItems {
                 if field == sortField {
@@ -58,7 +58,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     */
     @IBAction func sortDirectionChanged(_ sender: Any) {
         let settings = UserDefaults.standard
-        settings.set(swAscending.isOn, forKey: Constants.sortDirectionKey)
+        settings.set(swAscending.isOn, forKey: Constants.kSortDirectionAscending)
         settings.synchronize()
     }
     
@@ -80,7 +80,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         print("chosen item: \(selectedField)")
         
         let settings = UserDefaults.standard
-        settings.set(selectedField, forKey: Constants.sortFieldKey)
+        settings.set(selectedField, forKey: Constants.kSortField)
         settings.synchronize()
     }
 }

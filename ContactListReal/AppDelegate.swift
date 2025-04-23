@@ -20,13 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             settings.set("city", forKey: Constants.kSortField)
             }
 
-        if settings.object(forKey: Constants.sortDirectionKey) == nil {
-            settings.set(true, forKey: Constants.sortDirectionKey)
+        if settings.object(forKey: Constants.kSortDirectionAscending) == nil {
+            settings.set(true, forKey: Constants.kSortDirectionAscending)
             }
 
             settings.synchronize()
-        print("sort field: \(settings.string(forKey: Constants.sortFieldKey)!)")
-        print("sort direction: \(settings.bool(forKey: Constants.sortDirectionKey))")
+        print("sort field: \(settings.string(forKey: Constants.kSortField)!)")
+        print("sort direction: \(settings.bool(forKey: Constants.kSortDirectionAscending))")
 
             return true
         }
