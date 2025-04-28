@@ -50,41 +50,41 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    private func processAddressResponse(_ contact: Contact, withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
-        if let error = error {
-            print("Geocoder error: \(error)")
-        } else {
-            var bestMatch: CLLocation?
-            if let placemarks = placemarks, placemarks.count > 0 {
-                bestMatch = placemarks.first?.location
-            }
-            if let coordinate = bestMatch?.coordinate {
-                let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                mp.title = contact.contactName
-                mp.subtitle = contact.streetAddress
-                mapView.addAnnotation(mp)
-            } else {
-                print("didn't find any matching locations")
-            }
-        }
-    }
+           
+       private func processAddressResponse(_ contact: Contact, withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+           if let error = error {
+               print("Geocoder error: \(error)")
+           } else {
+               var bestMatch: CLLocation?
+               if let placemarks = placemarks, placemarks.count > 0 {
+                   bestMatch = placemarks.first?.location
+               }
+               if let coordinate = bestMatch?.coordinate {
+                   let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                   mp.title = contact.contactName
+                   mp.subtitle = contact.streetAddress
+                   mapView.addAnnotation(mp)
+               } else {
+                   print("didn't find any matching locations")
+               }
+           }
+       }
 
 
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        mapView.removeAnnotations(mapView.annotations)
-        var span = MKCoordinateSpan()
-        span.latitudeDelta = 0.2
-        span.longitudeDelta = 0.2
-        let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-        mapView.setRegion(viewRegion, animated: true)
-        let mp = MapPoint(latitude: userLocation.coordinate.latitude,
-                          longitude: userLocation.coordinate.longitude)
-        mp.title = "You"
-        mp.subtitle = "Are here"
-        mapView.addAnnotation(mp)
-    }
-    
+       
+       func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+           mapView.removeAnnotations(mapView.annotations)
+           var span = MKCoordinateSpan()
+           span.latitudeDelta = 0.2
+           span.longitudeDelta = 0.2
+           let viewRegion = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+           mapView.setRegion(viewRegion, animated: true)
+           let mp = MapPoint(latitude: userLocation.coordinate.latitude,
+                             longitude: userLocation.coordinate.longitude)
+           mp.title = "You"
+           mp.subtitle = "Are here"
+           mapView.addAnnotation(mp)
+       }
     @IBAction func findUser(_ sender: Any) {
         mapView.showsUserLocation = true
         mapView.setUserTrackingMode(.follow, animated: true)

@@ -351,18 +351,27 @@ U29ydCBPcmRlcjoIA
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcL-oi-z64">
+                                <rect key="frame" x="351.66666666666669" y="0.0" width="41.333333333333314" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AXq-H8-Ekz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hfB-2u-RCu" firstAttribute="centerX" secondItem="dyf-iv-Yvo" secondAttribute="centerX" id="6dP-1n-eki"/>
+                            <constraint firstAttribute="trailing" secondItem="dcL-oi-z64" secondAttribute="trailing" id="8il-x4-jSm"/>
                             <constraint firstItem="hfB-2u-RCu" firstAttribute="centerY" secondItem="dyf-iv-Yvo" secondAttribute="centerY" id="Fst-55-Bkc"/>
                             <constraint firstItem="hfB-2u-RCu" firstAttribute="centerY" secondItem="dyf-iv-Yvo" secondAttribute="centerY" id="Qhe-2r-wpE"/>
+                            <constraint firstItem="dcL-oi-z64" firstAttribute="top" secondItem="dyf-iv-Yvo" secondAttribute="top" id="hKO-Da-Eos"/>
                             <constraint firstItem="hfB-2u-RCu" firstAttribute="centerX" secondItem="dyf-iv-Yvo" secondAttribute="centerX" id="l5S-36-5hL"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="Wul-D7-06u"/>
                     <connections>
+                        <outlet property="lblBattery" destination="dcL-oi-z64" id="vpT-eI-ERz"/>
                         <outlet property="pckSortField" destination="euZ-3g-MnL" id="W5F-Ge-UjH"/>
                         <outlet property="swAscending" destination="W5I-06-Hc7" id="gr3-jc-6Fb"/>
                     </connections>
