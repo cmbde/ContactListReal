@@ -4,7 +4,7 @@
 //
 //  Created by user272224 on 4/15/25.
 //
-
+import AVFoundation
 import UIKit
 import CoreData
 class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -23,26 +23,56 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var txtContactName: UITextField!
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     
+    @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var imgContactPicture: UIImageView!
     @IBAction func changePicture(_ sender: Any) {
         print("take picture button clicked")
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let cameraController = UIImagePickerController()
-            cameraController.sourceType = .camera
-            cameraController.cameraCaptureMode = .photo
-            cameraController.delegate = self
-            cameraController.allowsEditing = true
-            self.present(cameraController, animated: true, completion: nil)
-        } // method to a ccess defualt image library to test / see if image saving works succcesfully
-        //else if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            //let libraryController = UIImagePickerController()
-            //libraryController.sourceType = .photoLibrary
-            //libraryController.delegate = self
-            //libraryController.allowsEditing = true
-            //self.present(libraryController, animated: true, completion: nil)
-        //}
-    }
-    
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) !=
+            AVAuthorizationStatus.authorized {
+            
+            let alertController = UIAlertController(title: "camera access denied",
+                                                    message: "in order to take pictures, you need to allow the app to access the camera in the settings",
+                                                    preferredStyle: .alert)
+            let actionSettings = UIAlertAction(title: "open settings",
+                                               style: .default) { action in
+                self.openSettings()
+            }
+            let actionCancel = UIAlertAction(title: "cancel",
+                                             style: .cancel,
+                                             handler: nil)
+            alertController.addAction(actionSettings)
+            alertController.addAction(actionCancel)
+            present(alertController, animated: true, completion: nil)
+            
+        } else {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let cameraController = UIImagePickerController()
+                cameraController.sourceType = .camera
+                cameraController.cameraCaptureMode = .photo
+                cameraController.delegate = self
+                cameraController.allowsEditing = true
+                self.present(cameraController, animated: true, completion: nil)
+                
+            } // method to access default image library to test / see if image saving works successfully
+            // else if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            //     let libraryController = UIImagePickerController()
+            //     libraryController.sourceType = .photoLibrary
+            //     libraryController.delegate = self
+            //     libraryController.allowsEditing = true
+            //     self.present(libraryController, animated: true, completion: nil)
+            // }
+        }}
+        func openSettings() {
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(settingsUrl)
+                }
+            }
+        
+
+        
     func imagePickerController(_ picker: UIImagePickerController,
                                 didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.editedImage] as? UIImage {
@@ -80,7 +110,16 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             }
         }
 
-   
+    @objc func callPhone(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let number = txtCellPhone.text
+            if number!.count > 0 {
+                let url = NSURL(string: "telprompt://\(number!)")
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+                print("calling phone number: \(url!)")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +144,11 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
                 lblBirthdate.text = formatter.string(from:currentContact!.birthday as! Date)
                 self.navigationItem.leftBarButtonItem = self.editButtonItem
             }
-        }
+            let longPress = UILongPressGestureRecognizer.init(target: self,
+
+            action: #selector(callPhone(gesture:)))
+
+            lblPhone.addGestureRecognizer(longPress)        }
         
         self.changeEditMode(self)
         let textFields: [UITextField] = [txtContactName, txtAddress, txtCity, txtState, txtZip, txtCellPhone, txtHomePhone, txtEmail]

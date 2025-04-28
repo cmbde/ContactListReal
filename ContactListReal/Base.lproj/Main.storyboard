@@ -94,7 +94,7 @@ CENvbnRhY3RzA
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="qVq-Ji-21d">
                                                         <rect key="frame" x="0.0" y="0.0" width="255.66666666666666" height="63.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGM-MT-K4r">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGM-MT-K4r">
                                                                 <rect key="frame" x="0.0" y="0.0" width="255.66666666666666" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -222,6 +222,7 @@ CENvbnRhY3RzA
                         <outlet property="btnChangeDate" destination="INf-AK-U0G" id="qgi-o9-XNB"/>
                         <outlet property="imgContactPicture" destination="0a4-E6-uX3" id="by9-fZ-FQ9"/>
                         <outlet property="lblBirthdate" destination="I5L-E4-8hc" id="H0y-hs-3hy"/>
+                        <outlet property="lblPhone" destination="fGM-MT-K4r" id="aie-3v-TY7"/>
                         <outlet property="scrollView" destination="VGA-ha-5Xx" id="XpW-e8-CaS"/>
                         <outlet property="sgmtEditMode" destination="O0g-9j-Fu2" id="mx8-4F-26h"/>
                         <outlet property="txtAddress" destination="d0V-Zb-tcT" id="uMp-Ad-27F"/>

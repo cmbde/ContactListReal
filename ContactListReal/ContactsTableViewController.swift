@@ -4,7 +4,6 @@
 //
 //  Created by user272224 on 4/16/25.
 //
-
 import UIKit
 import CoreData
 class ContactsTableViewController: UITableViewController {
