@@ -25,6 +25,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     
     @IBOutlet weak var imgContactPicture: UIImageView!
     @IBAction func changePicture(_ sender: Any) {
+        print("take picture button clicked")
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             let cameraController = UIImagePickerController()
             cameraController.sourceType = .camera
@@ -32,19 +33,31 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             cameraController.delegate = self
             cameraController.allowsEditing = true
             self.present(cameraController, animated: true, completion: nil)
-        }
+        } // method to a ccess defualt image library to test / see if image saving works succcesfully
+        //else if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            //let libraryController = UIImagePickerController()
+            //libraryController.sourceType = .photoLibrary
+            //libraryController.delegate = self
+            //libraryController.allowsEditing = true
+            //self.present(libraryController, animated: true, completion: nil)
+        //}
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey :
-                                                                        Any]) {
+                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.editedImage] as? UIImage {
             imgContactPicture.contentMode = .scaleAspectFit
             imgContactPicture.image = image
+
+            if currentContact == nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentContact = Contact(context: context)
+            }
+            currentContact?.image = image.jpegData(compressionQuality: 1.0)
         }
-        dismiss(animated: true,completion: nil)
+        dismiss(animated: true, completion: nil)
     }
-    
+
     func dateChanged(date: Date) {
         if currentContact == nil {
             let context = appDelegate.persistentContainer.viewContext
@@ -81,6 +94,11 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
                     txtEmail.text        = currentContact!.email
                     txtCellPhone.text    = currentContact!.cellPhone
                     txtHomePhone.text    = currentContact!.homePhone
+            
+            if let imageData  = currentContact?.image {
+                imgContactPicture.image = UIImage(data:imageData)
+            }
+            
             let formatter = DateFormatter()
             formatter.dateStyle = .short
             if currentContact!.birthday != nil {
