@@ -395,6 +395,7 @@ U29ydCBPcmRlcjoIA
                     <connections>
                         <outlet property="lblBattery" destination="dcL-oi-z64" id="vpT-eI-ERz"/>
                         <outlet property="pckSortField" destination="euZ-3g-MnL" id="W5F-Ge-UjH"/>
+                        <outlet property="settingsView" destination="dyf-iv-Yvo" id="ZGo-8c-SWf"/>
                         <outlet property="swAscending" destination="W5I-06-Hc7" id="gr3-jc-6Fb"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
     
+    @IBOutlet var settingsView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let settings = UserDefaults.standard
@@ -102,8 +103,44 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         let batteryLevelPercent = device.batteryLevel * 100
         let batteryLevel = String(format: "%.0f%%", batteryLevelPercent)
-        let batteryStatus = "\(batteryLevel) (\(batteryState))"
+        let batteryStatus = "\(batteryLevel) (\(batterbbcbcccyState))"
         lblBattery.text = batteryStatus
+    }
+    
+    func startMotionDetection () {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let mManager = appDelegate.motionManager
+        if mManager.isAccelerometerAvailable{
+            mManager.accelerometerUpdateInterval = 0.05
+            mManager.startAccelerometerUpdates(to: OperationQueue.main){
+                (data: CMAccelerometerData?, error: Error?) in
+                self.updateLabel(data: data!)
+            }
+        }
+    }
+    
+    func updateLabel(data: CMAccelerometerData) {
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
+        let moveFactor:Double = 15.0
+        var rect = lblBattery.frame
+        let moveTox = Double(rect.origin.x) + data.accerlation.x * moveFactor
+        let moveToY = Double(rect.origin.y + rect.size.height)-(data.accleration.y * moveFactor)
+        let maxX = Double(settingsView.frame.size.width - rect.width)
+        let maxY = Double(settingsView.frame.size.height - tabBarHeight!)
+        let minY = Double(rect.size.height + statusBarHeight)
+        if(moveToX > 0 && moveToX < maxX){
+            rect.origin.x +- CGFloat(data.acceleration.x * moveFactor)
+        }
+        if(moveToY > minY && moveToY < maxY ){
+            rect.origin.y -= CGFloat(data.acceleration.y * moveFactor):
+        
+        }
+        UIView.animate(withDuration: TimeInterval(0),
+                       delay: TimeInterval(0),
+                       options: UIView.AnimationOptions.curveEaseInOut,
+                       animations: (self.lblBattery.frame = rect),
+                       completion: nil)
     }
 
     /*
